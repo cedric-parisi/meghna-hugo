@@ -1,0 +1,78 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+{{ if $data.services.services.enable }}
+{{ with $data.services.services }}
+{{"<!-- Start Services -->" | safeHTML}}
+<section id="services" class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        {{"<!-- section title -->" | safeHTML}}
+        <div class="title text-center wow fadeInUp" data-wow-duration="500ms">
+          <h2><span class="color">{{ .title }}</span></h2>
+        </div>
+      </div>
+      {{"<!-- /section title -->" | safeHTML}}
+
+      {{ range .services_member}}
+      {{"<!-- services member -->" | safeHTML}}
+      <div class="col-lg-3 col-md-6 col-12 wow fadeInDown" data-wow-duration="500ms">
+        <div class="services-member">
+          <div class="member-photo">
+            {{"<!-- member photo -->" | safeHTML}}
+            <img class="img-fluid lozad" data-src="{{ .image_webp | absURL }}" onerror="this.onerror=null;this.src='{{ .image | absURL }}'" alt="{{ .name }}">
+          </div>
+
+          {{"<!-- member name & designation -->" | safeHTML}}
+          <div class="member-meta">
+            <h4>{{ .name }}</h4>
+            <p>{{ .content | markdownify }}</p>
+          </div>
+        </div>
+        <div style="color: black;">
+          {{ range .groupes }}
+            <div>
+              <span style="text-decoration: underline; font-weight: bold;">{{ .title }}</span>
+              <table style="width:100%;">
+                <thead>
+                  <th></th>
+                  <th style="text-align:right;">Tradi.</th>
+                  <th style="text-align:right;">Sucre</th>
+                </thead>
+                <tbody>
+                  {{ range .tarifs }}
+                  <tr>
+                    <td>{{ .name }}</td>
+                    <td style="text-align:right;">{{ .tradi }}€</td>
+                    <td style="text-align:right;">{{ .sucre }}€</td>
+                  </tr>
+                  {{ end }}
+                </tbody>
+              </table>
+            </div>
+          {{ end }}
+          {{ range .sections }}
+          <div style="margin-top: 10px;">
+            <span style="text-decoration: underline; font-weight: bold;">{{ .title }}</span>
+            {{ range .tarifs }}
+            <div>
+              <span>{{ .name }}</span>
+              <span style="float: right;">{{ .price }}€</span>
+            </div>
+              <span>
+                {{"<!-- member photo -->" | safeHTML}}
+                <span style="color:gray; font-style: italic;">{{ .content | markdownify }}</span>
+              </span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      {{"<!-- end services member -->" | safeHTML}}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{"<!-- /services -->" | safeHTML}}
+{{ end }}
+{{ end }}
