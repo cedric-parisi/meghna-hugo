@@ -1368,3 +1368,39 @@ figcaption {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+
+
+:root {
+  --slate: #040f1e;
+  --white: #02202c;
+	
+	--trans: transparent;
+}
+
+.diamonds {
+	background: var(--white);
+	background-image:
+		repeating-linear-gradient(
+			60deg,
+			var(--slate), 
+			var(--slate) 0.6em, 
+			var(--trans) 0.61em, 
+			var(--trans) 0.9em, 
+			var(--slate) 0.91em),
+		repeating-linear-gradient(
+			-60deg,
+			var(--slate), 
+			var(--slate) 0.6em, 
+			var(--trans) 0.61em, 
+			var(--trans) 0.9em, 
+			var(--slate) 0.91em),
+		repeating-linear-gradient(
+			90deg,
+			var(--white), 
+			var(--white) 0.3em,
+			var(--trans) 0.31em,
+			var(--trans) 0.52em,
+			var(--white) 0.525em);
+	background-position: 0.48em 0;
+	background-size: 21em;
+}

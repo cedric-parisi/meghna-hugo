@@ -53,6 +53,7 @@
           {{ end }}
           {{ range .sections }}
           <div style="margin-top: 10px;">
+            {{ if .promo  }} <div style="background-color:#ffbc11; padding:2px;"> {{ end }}
             <span style="text-decoration: underline; font-weight: bold;">{{ .title }}</span>
             {{ range .tarifs }}
             <div>
@@ -63,7 +64,8 @@
                 {{"<!-- member photo -->" | safeHTML}}
                 <span style="color:gray; font-style: italic;">{{ .content | markdownify }}</span>
               </span>
-            {{ end }}
+              {{ end }}
+              {{ if .promo  }} </div> {{ end }}
           </div>
           {{ end }}
         </div>
